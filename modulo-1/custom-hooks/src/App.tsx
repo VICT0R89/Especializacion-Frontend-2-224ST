@@ -1,29 +1,11 @@
-import { useState } from 'react';
 import { Modal, Sidebar } from './components';
 import "./App.css";
-
+import { useToggle } from './cutomHook/useToggle';
 export default function App() {
 
-  const [isOpenSidebar, setIsOpenSidebar] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const openSidebar = () => {
-    setIsOpenSidebar(true);
-  }
-
-  const closeSidebar = () => {
-    setIsOpenSidebar(false);
-  }
-
-  const openModal = () => {
-    setIsOpenModal(true);
-  }
-
-  const closeModal = () => {
-    setIsOpenModal(false);
-  }
-
-
+  const {open:openSidebar, close:closeSidebar, isOpen:isOpenSidebar} = useToggle(false)
+  const {open:openModal, close:closeModal, isOpen:isOpenModal} = useToggle(false)
+  
   return (
     <div className="h-screen w-full">
       <div className="container">
